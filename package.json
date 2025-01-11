@@ -1,0 +1,24 @@
+{
+  "name": "release-it-docker-plugin",
+  "version": "0.0.5",
+  "description": "",
+  "keywords": [],
+  "repository": "",
+  "homepage": "",
+  "author": "Raiper34",
+  "license": "MIT",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "devDependencies": {
+    "release-it": "^18.1.1"
+  },
+  "peerDependencies": {
+    "release-it": "^18.1.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
