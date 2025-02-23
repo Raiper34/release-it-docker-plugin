@@ -26,16 +26,21 @@ export default class DockerPlugin {
 
         this.registerPrompts({
             build: {type: 'confirm', message: () => 'Build docker image?', default: !!this.options.build},
+            buildx: {type: 'confirm', message: () => 'Run docker buildx?', default: true},
             push: {type: 'confirm', message: () => 'Push to docker hub?', default: !!this.options.push},
         });
     }
 
     async beforeRelease() {
-        return this.step({ task: () => this.build(), label: 'docker build', prompt: 'build'});
+        if (!this.options.buildx) {
+            return this.step({ task: () => this.build(), label: 'docker build', prompt: 'build'});
+        }
     }
 
     async release() {
-        return this.step({ task: () => this.push(), label: 'docker push', prompt: 'push'});
+        return this.options.buildx ?
+            this.step({ task: () => this.buildx(), label: 'docker buildx build', prompt: 'buildx'}) :
+            this.step({ task: () => this.push(), label: 'docker push', prompt: 'push'});
     }
 
     afterRelease() {
@@ -67,6 +72,25 @@ export default class DockerPlugin {
             latestTag ? this.exec(`docker push ${imageName}:latest`) : Promise.resolve(),
         ]).then(
             () => this.setContext({ isPushed: true }),
+            (err) => {
+                this.debug(err);
+                throw new Error(err);
+            }
+        );
+    }
+
+    buildx() {
+        const { imageName, latestTag, builder, build, push, platform = 'linux/arm64,linux/amd64' } = this.options;
+        const args = [
+            '-t', `${imageName}:${this.config.contextOptions.version}`,
+            ...(latestTag ? ['-t', `${imageName}:latest`] : []),
+            '--platform', platform,
+            ...(builder ? ['--builder', builder] : []),
+            ...(build ? ['--load'] : []),
+            ...(push ? ['--push'] : []),
+        ];
+        return this.exec(`docker buildx build ${args.filter(Boolean).join(' ')} .`).then(
+            () => this.setContext({ isBuilt: true }),
             (err) => {
                 this.debug(err);
                 throw new Error(err);
