@@ -9,7 +9,9 @@
   "license": "MIT",
   "main": "src/index.js",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "release": "release-it"
+  },
   "devDependencies": {
     "release-it": "^18.1.1"
   },
