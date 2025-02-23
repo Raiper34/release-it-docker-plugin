@@ -1,8 +1,17 @@
 {
   "name": "release-it-docker-plugin",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "Plugin to ability build docker images and push to docker hub in release-it workflow.",
-  "keywords": ["release-it", "docker plugin", "docker", "plugin", "docker hub", "automatic release", "release", "release-it-plugin"],
+  "keywords": [
+    "release-it",
+    "docker plugin",
+    "docker",
+    "plugin",
+    "docker hub",
+    "automatic release",
+    "release",
+    "release-it-plugin"
+  ],
   "repository": "https://github.com/Raiper34/release-it-docker-plugin",
   "homepage": "https://github.com/Raiper34/release-it-docker-plugin",
   "author": "Raiper34",
