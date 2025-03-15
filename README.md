@@ -53,7 +53,7 @@ The plugin can be configured with the following options:
 | build     | false         | if plugin should build docker image, only applicable without with buildx                                    |
 | push      | false         | if plugin should push docker image to docker hub, only applicable without with buildx                       |
 | builder   | undefined     | builder name, only applicable together with buildx                                                          |
-| output    | docker        | where image will be stored (available options `docker` or `registry`), only applicable together with buildx |
+| output    | registry        | where image will be stored (available options `docker` or `registry`), only applicable together with buildx |
 
 # 📖 License
 MIT
