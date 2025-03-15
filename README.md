@@ -45,15 +45,15 @@ Use the plugin in `.release-it.json` as follows:
 ## Options
 The plugin can be configured with the following options:
 
-| Name      | Default value           | Description                                            |
-|-----------|-------------------------|--------------------------------------------------------|
-| build     | false                   | if plugin should build docker image                    |
-| push      | false                   | if plugin should push docker image to docker hub       |
-| latestTag | false                   | if also `latest` tag should be built and pushed        |
-| imageName | undefined               | name of docker image to build and push                 |
-| buildx    | false                   | if plugin should use new buildx tool                   |
-| builder   | undefined               | builder name, only applicable together with buildx     |
-| platform  | linux/arm64,linux/amd64 | target platforms, only applicable together with buildx |
+| Name      | Default value | Description                                                                                                 |
+|-----------|---------------|-------------------------------------------------------------------------------------------------------------|
+| imageName | undefined     | name of docker image to build and push                                                                      |
+| latestTag | false         | if also `latest` tag should be built and pushed                                                             |
+| buildx    | false         | if plugin should use new buildx tool                                                                        |
+| build     | false         | if plugin should build docker image, only applicable without with buildx                                    |
+| push      | false         | if plugin should push docker image to docker hub, only applicable without with buildx                       |
+| builder   | undefined     | builder name, only applicable together with buildx                                                          |
+| output    | docker        | where image will be stored (available options `docker` or `registry`), only applicable together with buildx |
 
 # 📖 License
 MIT

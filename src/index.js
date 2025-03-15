@@ -80,14 +80,13 @@ export default class DockerPlugin {
     }
 
     buildx() {
-        const { imageName, latestTag, builder, build, push, platform = 'linux/arm64,linux/amd64' } = this.options;
+        const { imageName, latestTag, builder, output, platform = 'linux/arm64,linux/amd64' } = this.options;
         const args = [
             '-t', `${imageName}:${this.config.contextOptions.version}`,
             ...(latestTag ? ['-t', `${imageName}:latest`] : []),
             '--platform', platform,
             ...(builder ? ['--builder', builder] : []),
-            ...(build ? ['--load'] : []),
-            ...(push ? ['--push'] : []),
+            ...(output === 'docker' ? ['--load'] : ['--push']),
         ];
         return this.exec(`docker buildx build ${args.filter(Boolean).join(' ')} .`).then(
             () => this.setContext({ isBuilt: true }),
