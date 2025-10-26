@@ -8,5 +8,11 @@
   },
   "npm": {
     "publish": true
-  }
+  },
+  "hooks": {
+    "before:init": [],
+    "after:bump": ["npm run changelog"],
+    "after:release": []
+  },
+  "plugins": {}
 }
