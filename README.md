@@ -1,6 +1,7 @@
 [![npm version](https://badge.fury.io/js/release-it-docker-plugin.svg)](https://badge.fury.io/js/release-it-docker-plugin)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/release-it-docker-plugin)
 ![NPM](https://img.shields.io/npm/l/release-it-docker-plugin)
+[![GitHub Workflow Status](https://github.com/raiper34/release-it-docker-plugin/actions/workflows/test.yml/badge.svg)](https://github.com/Raiper34/release-it-docker-plugin)
 [![npm](https://img.shields.io/npm/dt/release-it-docker-plugin)](https://badge.fury.io/js/release-it-docker-plugin)
 [![npm](https://img.shields.io/npm/dm/release-it-docker-plugin)](https://badge.fury.io/js/release-it-docker-plugin)
 [![npm](https://img.shields.io/npm/dw/release-it-docker-plugin)](https://badge.fury.io/js/release-it-docker-plugin)
